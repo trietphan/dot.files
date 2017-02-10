@@ -1,24 +1,25 @@
 (require 'package)
+(setq package-enable-at-startup nil)
 (add-to-list 'package-archives
 	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (package-initialize)
-(when (not package-archive-contents)
+
+; list the packages you want
+(setq my-package '(yasnippet py-autopep8 flycheck golden-ratio web-mode emmet-mode autopair comment-dwim-2 smex swiper
+                   smart-mode-line projectile))
+
+; fetch the list of packages available 
+(unless package-archive-contents
   (package-refresh-contents))
+
+; install the missing packages
+(dolist (package my-package)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; Package: yasnippet
 (require 'yasnippet)
 (yas-global-mode 1)
-
-;;; auto complete mod
-;;; should be loaded after yasnippet so that they can work together
-(require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories "~/.emacs.d/ac-dict")
-(ac-config-default)
-;;; set the trigger key so that it can work together with yasnippet on tab key,
-;;; if the word exists in yasnippet, pressing tab will cause yasnippet to
-;;; activate, otherwise, auto-complete will
-(ac-set-trigger-key "TAB")
-(ac-set-trigger-key "<tab>")
 
 ;;Indention
 (setq tab-width 2
@@ -29,22 +30,13 @@
 ;;Yes and No
 (defalias 'yes-or-no-p 'y-or-n-p)
 
-(elpy-enable)
 (setq inhibit-startup-message t) ;; hide the startup message
 ;; (load-theme 'monokai t) ;; load material theme
 (load-theme 'tango-edited t)
 (global-linum-mode t) ;; enable line numbers globally
 
 ;;Flycheck mode supports realtime syntax checking
-(when (require 'flycheck nil t)
-  (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
-  (add-hook 'elpy-mode-hook 'flycheck-mode))
-
-;;autopep8 will automatically format and correct any PEP8 errors
-(require 'py-autopep8)
-(add-hook 'elpy-mode-hook 'py-autopep8-enable-on-save)
-
-;;Smart Mode Line
+(when (require 'flycheck nil t))
 
 ;; (setq powerline-default-separator-dir 'right)
 (setq sml/no-confirm-load-theme t)
@@ -112,23 +104,9 @@
 (require 'autopair)
 (autopair-global-mode) ;; enable autopair in all buffers
 
-
-;;Package python-django
-;; (add-to-list 'load-path "/folder/containing/file")
-;; (require 'python-django)
-
 ;;Comment
 (require 'comment-dwim-2)
 (global-set-key (kbd "M-;") 'comment-dwim-2)
-
-;;Angularjs-mode and angularjs-snippsets
-(require 'angular-snippets)
-(eval-after-load "sgml-mode"
-    '(define-key html-mode-map (kbd "C-c C-d") 'ng-snip-show-docs-at-point))
-(add-to-list 'yas-snippet-dirs "/elpa/angularjs-mode/snippets")
-(add-to-list 'ac-dictionary-directories "/elpa/angularjs-mode/ac-dict")
-(add-to-list 'ac-modes 'angular-mode)
-(add-to-list 'ac-modes 'angular-html-mode)
 
 (ido-mode -1)
 
