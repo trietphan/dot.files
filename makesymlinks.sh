@@ -8,7 +8,7 @@
 
 dir=~/dot.files                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc zshrc zsh cordova tmux.conf zsh-update zsh-history emacs.d"    # list of files/folders to symlink in homedir
+files="bashrc zshrc zsh cordova tmux.conf zsh-update zsh-history"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -32,6 +32,7 @@ done
 
 ln -s $dir/git/gitconfig ~/.gitconfig
 ln -s $dir/git/gitignore_global ~/.gitignore_global
+ln -s $dir/.emacs.d ~/.emacs.d
 
 
 # install_zsh () {
