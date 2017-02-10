@@ -8,7 +8,7 @@
 
 dir=~/dot.files                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files="bashrc zshrc zsh cordova tmux.conf zsh-update zsh-history"    # list of files/folders to symlink in homedir
+files="bashrc zshrc zsh cordova tmux.conf"    # list of files/folders to symlink in homedir
 
 ##########
 
