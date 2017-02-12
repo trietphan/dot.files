@@ -1,4 +1,3 @@
 [submodule ".emacs.d"]
 	path = .emacs.d
-	url = https://github.com/kjhealy/emacs-starter-kit.git
-	branch = personal-setting
+	url = https://github.com/trietphan/emacs-starter-kit.git
