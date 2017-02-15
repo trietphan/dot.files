@@ -10,6 +10,8 @@ $
 ```
 
 ## Credits
-The`makesymlinks.sh` file is from[michaeljsmalley](https://github.com/michaeljsmalley/dotfiles).
+The`makesymlinks.sh` file is from [michaeljsmalley](https://github.com/michaeljsmalley/dotfiles).
+
 The `git` config is from [webpro](https://github.com/webpro/dotfiles).
+
 The `.emacs.d` is forked from [kjhealy/emacs-starter-kit](https://github.com/kjhealy/emacs-starter-kit).
