@@ -105,3 +105,7 @@ alias tree="tree -A"
 alias treed="tree -d"
 alias tree1="tree -d -L 1"
 alias tree2="tree -d -L 2"
+
+# Recursively remove Apple meta files
+alias deleteds="find . -type f -name '*.DS_Store' -ls -exec /bin/rm {} \;"
+alias deletead="find . -type d -name '.AppleD*' -ls -exec /bin/rm -r {} \;"
